@@ -25,7 +25,7 @@ body{
     height: auto;
     margin-bottom: 3%;
     padding: 0 0 3% 0;
-    background-color: #292b2c;
+    background-color: #212529;
     border-radius: 10px;
     box-shadow: 0 0 15px #0D0D0D ;
 }
@@ -37,7 +37,7 @@ body{
     padding:3%;
     width: 85%;
     height:auto;
-    background-color: #181818;
+    background-color: #1a1a1d;
     border-radius: 10px;
     box-shadow: 0 0 15px #0D0D0D ;
 }
@@ -47,20 +47,20 @@ body{
     margin-top: 3%;
     margin-bottom: 3%;
     padding:1.5%;
-    width: 50%;
+    width: 40%;
     height:auto;
-    background-color: #292b2c;
+    background-color: #212529;
     border-radius: 10px;
     box-shadow: 0 0 15px #0D0D0D ;
 }
 
-.add_detail_block{
+.form_block{
     margin: auto;
     margin-top: 3%;
     padding:1%;
     width: 30%;
     height: auto;
-    background-color: #292b2c;
+    background-color: #212529;
     border-radius: 10px;
     box-shadow: 0 0 15px #0D0D0D ;
 }

@@ -1,10 +1,37 @@
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
-from django.views.generic import UpdateView, DeleteView
+from django.views.generic import UpdateView
 from django.urls import reverse_lazy
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
+
+
+def user_login(request):
+    if request.method == "POST":
+        form = LoginForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect("profile")
+    else:
+        form = LoginForm()
+    if request.user.is_authenticated and request.user != 'AnonymousUser':
+        return redirect("profile")
+    else:
+        return render(request, "main/login.html", {"form": form})
+
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect('login')
+
+
+def profile(request):
+    user = User.objects.get(id=request.user.id)
+    context = {'user': user}
+    return render(request, 'main/profile.html', context)
 
 
 def home_page(request):
@@ -54,3 +81,19 @@ def create_detail(request):
         'form': form,
     }
     return render(request, 'main/create_detail.html', data)
+
+
+def delete_detail(request, pk):
+    if request.user.is_authenticated:
+        product = Detail.objects.get(id=pk)
+        product.delete()
+        return redirect('home')
+    else:
+        return redirect('home')
+
+
+class UpdateDetail(UpdateView):
+    model = Detail
+    form_class = DetailForm
+    template_name = 'main/update_detail.html'
+    success_url = reverse_lazy("home")
