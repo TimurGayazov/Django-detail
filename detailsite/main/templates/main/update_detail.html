@@ -1,0 +1,41 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+Обновить деталь
+{% endblock %}
+
+{% block main_info_bl %}
+<div class="form_block">
+    <h2 class="border-bottom text-center">Обновить деталь</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Название детали: </label>
+            {{ form.detail_name }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Выберите изображение: </label>
+            {{ form.detail_image }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Размер(ы) детали: </label>
+            {{ form.detail_size }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Цвет(а) детали: </label>
+            {{ form.detail_color }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Материал(ы) детали: </label>
+            {{ form.detail_material }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Описание детали: </label>
+            {{ form.detail_description }}
+        </div>
+        <div class="text-center border-top">
+            <button type="submit" class="btn btn-outline-success mt-3">Обновить</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

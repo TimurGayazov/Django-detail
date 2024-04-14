@@ -1,0 +1,19 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+Профиль | {{user.username}}
+{% endblock %}
+
+{% block main_info_bl %}
+<div class="form_block">
+    <h2 class="border-bottom text-center">Профиль</h2>
+    <h4>Username: {{user.username}}</h4>
+    <h4>Имя: {{user.first_name}}</h4>
+    <h4>Фамилия: {{user.last_name}}</h4>
+    <h4>E-mail: {{user.email}}</h4>
+    <h4>Роль: {{user.user_role}}</h4>
+    <div class="text-center">
+        <a href="/admin" class="btn btn-outline-light">Админка</a>
+    </div>
+</div>
+{% endblock %}
